@@ -413,11 +413,23 @@ print(pe99());
 
 
 def pe76():
+    _cache = dict.fromkeys([str(x) for x in range(1,100)],0);
+    res = 0;
+    def comb(x):
+        if x == 1:
+            return 0;
+        else:
+            cached = _cache.get(str(x),False);
+            if cached:
+                return cached+comb(x-1);
+            else:
+                _cache[str(x)] = comb(x-1);
+                return _cache[str(x)]+comb(x-1);
     for i in reversed(range(1,100)):
-        100 - i;
-    return 0;
+        res += comb(100-i);
+    return res;
         
-        
+print(pe76());
         
         
         

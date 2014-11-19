@@ -59,15 +59,21 @@ while True:
             if event.key == K_ESCAPE:
                 pygame.event.post(pygame.event.Event(QUIT));
         elif event.type == MOUSEBUTTONUP:
+            j = (mousex-1)//5;
+            i = (mousey-1)//5;
             if event.button == 1:
-                j = (mousex-1)//5;
-                i = (mousey-1)//5;
                 for x in [(j-2)%X,(j-1)%X,j,(j+1)%X,(j+2)%X]:
                     for y in [(i-2)%Y,(i-1)%Y,i,(i+1)%Y,(i+2)%Y]:
                         if random.random() < 0.5:
                             Map[y][x] = 1;
                         else:
                             Map[y][x] = 0;
+            if event.button == 3:
+                Map[i+1][j-1] = 1;
+                Map[i+1][j] = 1;
+                Map[i+1][j+1] = 1;
+                Map[i][j+1] = 1;
+                Map[i-1][j] = 1;
     
     # step + drawing
     window.fill(pygame.Color(255, 255, 255));    
