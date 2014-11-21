@@ -48,17 +48,22 @@ def mark_error():
                 pygame.draw.rect(window, RED, Rect(150*j,150*i,150,150), 0);
     return True;
      
-def draw():          
-    window.fill(pygame.Color(255, 255, 255));    
+def draw():  
+    # clear        
+    window.fill(pygame.Color(255, 255, 255)); 
+    # draw grid
     for i in range(10):
         w = 1;
         if i%3 == 0:
             w=3;
         pygame.draw.line(window,BLACK,(50*i,0),(50*i,450),w);
         pygame.draw.line(window,BLACK,(0,50*i),(450,50*i),w);
+    # draw error area
     mark_error();
+    # draw selection rectangle
     if sel[0] >= 0 and sel[0] < 9 and sel[1] >= 0 and sel[1] < 9:
         pygame.draw.rect(window, YELLOW, Rect(50*sel[1]+1,50*sel[0]+1,49,49), 0);
+    # draw numbers
     for r in range(9):
         for c in range(9):      
             if S[r][c]:  

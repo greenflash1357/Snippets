@@ -128,7 +128,7 @@ for n in range(1):
     game.players[winner_idx].tricks.append(trick)    
     game.players[winner_idx].pips += pips_of_cardlist(trick);
     
-    #TODO: set new starting player
+    #TODO: set new starting player (rotate player list? loop with new starting index? slicing?)
     
     
     
